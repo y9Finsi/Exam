@@ -1,30 +1,19 @@
 #include <stdio.h>
 
-float sumFoo(int n) {
-    float sum = 0.0;
-    float term;
-
-    // Вычисляем каждый член суммы и добавляем его к общей сумме
-    for(int i = 1; i <= n; i++) {
-        term = (float)i * i / fact(i);
-        sum += term;
-    }
-
-    return sum;
-}
-
-int fact(int n) {
-    int fact = 1;
-    for(int i = 1; i <= n; i++) {
-        fact *= i;
-    }
-    return fact;
-}
-
 int main() {
-    int n;
-    printf("Введите число n: ");
-    scanf("%d", &n);
-    printf("Сумма ряда: %f", sumFoo(n));
+    int n, sum = 0, count = 0;
+    while (1) {
+        scanf("%d", &n); // водим число
+        if (n == 0) break; // прерываем цикл, если появился 0
+        if (n % 2 == 0) { // если число четное
+            sum += n; // добавляем число к суме
+            count++; // увеличиваем счетик на 1
+        }
+    }
+    if (count == 0) {
+        printf("четныз чисел не было: 0\n"); // если не было четных чисел, выводим 0
+    } else {
+        printf("среднее значение четных чисел: %.1f\n", (float)sum / count); // выводим среднее значение четных чисел
+    }
     return 0;
 }
